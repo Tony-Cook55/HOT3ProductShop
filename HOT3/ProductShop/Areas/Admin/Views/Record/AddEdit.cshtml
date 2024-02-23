@@ -1,0 +1,54 @@
+﻿@model Record
+
+
+@* The Edit page should link to validation scripts for client side form validation but no other page should. 5pts *@
+@* Real Time Validation *@
+@section Scripts {
+    <!-- Include jQuery validation libraries -->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+@* Real Time Validation *@
+
+
+@{
+    string operation = ViewBag.Operation;
+    string pageTitle = (operation == "Add") ? "Add Record" : "Edit Record";
+}
+
+
+<h1>Admin @ViewBag.AddOrEdit Screen</h1>
+
+
+
+<form asp-area="Admin" asp-controller="Record" asp-action="Edit" method="post">
+
+    <div class="row">
+        <div class="mb-3 col">
+            <label asp-for=RecordName class="form-label">Record Name</label>
+            <input asp-for=RecordName class="form-control" placeholder="Record Name">
+
+            <span class="text-danger" asp-validation-for="RecordName"></span> @* Error Message *@
+        </div>
+        <div class="mb-3 col">
+            <label asp-for=ArtistName class="form-label">Artist</label>
+            <input asp-for=ArtistName class="form-control" placeholder="Artist Name">
+
+            <span class="text-danger" asp-validation-for="ArtistName"></span> @* Error Message *@
+        </div>
+        <div class="mb-3 col">
+            <label asp-for=Price class="form-label">Price</label>
+            <input asp-for=Price class="form-control" placeholder="Price">
+
+            <span class="text-danger" asp-validation-for="Price"></span> @* Error Message *@
+        </div>
+    </div>
+
+
+    <input type="hidden" asp-for="RecordId" />
+
+    <button type="submit" class="btn btn-primary">@ViewBag.AddOrEdit Record</button>
+
+    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-dark">Cancel</a>
+
+</form>

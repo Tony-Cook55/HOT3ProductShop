@@ -1,0 +1,70 @@
+﻿@model List<Record>
+
+@{
+    ViewBag.Title = "Record List";
+}
+
+<h1>Records</h1>
+
+
+<div class="row">
+
+    <div class="col-md-2">
+        <ul class="list-group   text-center">
+            <li class="list-group-item">
+                <a asp-controller="Home" asp-action="Index" asp-route-artist="all" class="nav-link">All</a>
+            </li>
+            <li class="list-group-item">
+                <a asp-controller="Home" asp-action="Index" asp-route-artist="Andy William" class="nav-link">Andy William</a>
+            </li>
+            <li class="list-group-item">
+                <a asp-controller="Home" asp-action="Index" asp-route-artist="Dean Martin" class="nav-link">Dean Martin</a>
+            </li>
+            <li class="list-group-item">
+                <a asp-controller="Home" asp-action="Index" asp-route-artist="Frank Sinatra" class="nav-link">Frank Sinatra</a>
+            </li>
+            <li class="list-group-item">
+                <a asp-controller="Home" asp-action="Index" asp-route-artist="Paul Anka" class="nav-link">Paul Anka</a>
+            </li>
+            <li class="list-group-item">
+                <a asp-controller="Home" asp-action="Index" asp-route-artist="Perry Como" class="nav-link">Perry Como</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="col-md-10">
+        <table class="table table-info table-striped">
+            <tr>
+                <th>
+                    Record Name
+                </th>
+                <th>
+                    Artist
+                </th>
+                <th>
+                    Price
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var record in Model)
+            {
+                <tr>
+                    <td>
+                        @record.RecordName
+                    </td>
+                    <td>
+                        @record.ArtistName
+                    </td>
+                    <td>
+                        @record.Price?.ToString("C")
+                    </td>
+                    <td>
+                        <a asp-controller="Record" asp-action="Details" asp-route-id="@record.RecordId" asp-route-slug="@record.Slug">Details</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

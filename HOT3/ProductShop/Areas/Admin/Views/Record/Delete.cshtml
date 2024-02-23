@@ -1,0 +1,15 @@
+﻿@model Record
+@{
+    ViewBag.Title = "Admin Record Delete";
+}
+
+<h1>Are you sure you want to delete @ViewBag.RecordName ?</h1>
+<form  asp-action="DeleteRecord" asp-method="post">
+
+    <input type="hidden" asp-for="RecordId"/>
+
+    <button type="submit" class="btn btn-danger" >Delete</button>
+
+    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-dark">Cancel</a>
+
+</form>
