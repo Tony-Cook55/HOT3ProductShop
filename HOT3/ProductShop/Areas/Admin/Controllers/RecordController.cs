@@ -31,6 +31,8 @@ namespace ProductShop.Areas.Admin.Controllers
 
             ViewBag.AddOrEdit = "Edit";
 
+
+
             return View("AddEdit", record); // sends the RECORD to the edit page to auto fill the info
         }
         // ------ EDITING A RECORD ------ \\
@@ -48,7 +50,6 @@ namespace ProductShop.Areas.Admin.Controllers
                 {
                     return View("AddEdit", record);
                 }
-
             }
 
             ViewBag.AddOrEdit = "Add";
