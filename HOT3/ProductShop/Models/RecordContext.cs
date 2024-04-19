@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProductShop.Models.Login;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ProductShop.Models
 {
-    public class RecordContext          : DbContext
+    public class RecordContext     : IdentityDbContext<User>
     {
 
         public RecordContext(DbContextOptions<RecordContext> options) : base(options)
@@ -20,7 +22,18 @@ namespace ProductShop.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
+
+
+
             base.OnModelCreating(modelBuilder);
+
+
+
+
+
+
 
             modelBuilder.Entity<Record>().HasData(
                 new Record

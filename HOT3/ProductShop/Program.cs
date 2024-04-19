@@ -1,6 +1,7 @@
 using ProductShop.Models;
-
+using ProductShop.Models.Login;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 
 
@@ -32,6 +33,24 @@ builder.Services.AddDbContext<RecordContext>(options => options.UseSqlServer(bui
 
 
 
+
+
+// USED FOR IDENTITY
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireDigit = false;
+}
+).AddEntityFrameworkStores<RecordContext>().AddDefaultTokenProviders();
+// USED FOR IDENTITY
+
+
+
+
+
+
+
 var app = builder.Build();
 
 
@@ -53,6 +72,31 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+
+
+
+
+
+// USED FOR IDENTITY
+app.UseAuthentication();
+app.UseAuthorization();
+
+
+// Calls in the ConfigureIdentity To Seed An Admin Role
+var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
+using (var scope = scopeFactory.CreateScope())
+{
+    await ConfigureIdentity.CreateAdminUserAsync(scope.ServiceProvider);
+}
+// USED FOR IDENTITY
+
+
+
+
+
+
+
 
 app.UseAuthorization();
 
