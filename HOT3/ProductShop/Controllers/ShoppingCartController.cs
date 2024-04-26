@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductShop.Models;
 
 namespace ProductShop.Controllers
 {
+
+
+    [Authorize]
     public class ShoppingCartController : Controller
     {
 

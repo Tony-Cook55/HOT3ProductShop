@@ -12,15 +12,15 @@ using ProductShop.Models;
 namespace ProductShop.Migrations
 {
     [DbContext(typeof(RecordContext))]
-    [Migration("20240223011924_DoubleToDecimal")]
-    partial class DoubleToDecimal
+    [Migration("20240419142338_HOT4")]
+    partial class HOT4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
